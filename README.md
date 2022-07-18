@@ -22,10 +22,10 @@ After that in order to get individual future results, we would have to do `get()
 
 But `CompletableFutures.combine()` provides type-safe alternative.
 
-var intFuture = CompletableFuture.completedFuture(1);
-var stringFuture = CompletableFuture.completedFuture("One");
-var doubleFuture = CompletableFuture.completedFuture(1.0);
-var decimalFuture = CompletableFuture.completedFuture(BigDecimal.ONE);
+        var intFuture = CompletableFuture.completedFuture(1);
+        var stringFuture = CompletableFuture.completedFuture("One");
+        var doubleFuture = CompletableFuture.completedFuture(1.0);
+        var decimalFuture = CompletableFuture.completedFuture(BigDecimal.ONE);
 
         var res = CompletableFutures.combine(intFuture, stringFuture, doubleFuture, decimalFuture)
                     .thenApply((i, s, d, bd) -> {
