@@ -21,7 +21,7 @@ After that, in order to get individual future results, we would have to do `get(
                     });
 ```
 
-But `CompletableFutures.combine()` provides an alternative which has the results of `Future`s are readily available and with correct types.
+But `CompletableFutures.combine()` provides an alternative which has the results of `Future`s readily available and with correct types.
 ```java
         var intFuture = getIntFutureFromSomewhere();
         var stringFuture = getStringFutureFromSomewhere();
