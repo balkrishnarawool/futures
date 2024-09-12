@@ -45,7 +45,7 @@ But `CompletableFutures.combine()` provides an alternative which has the results
     var list = CompletableFutures.combine(future1, future2).join().collect(Collectors.toList());
 ```
 
-#### Converting `Stream<SompletableFuture<T>>` into `CompletableFuture<Stream<T>>`
+#### Converting `Stream<CompletableFuture<T>>` into `CompletableFuture<Stream<T>>`
 ```java
     var stream = Stream.of(CompletableFuture.completedFuture(1),
             CompletableFuture.completedFuture(2),
@@ -56,7 +56,7 @@ But `CompletableFutures.combine()` provides an alternative which has the results
     var list = future.join().collect(Collectors.toList());
 ```
 
-#### Converting `Optional<SompletableFuture<T>>` into `CompletableFuture<Optional<T>>`
+#### Converting `Optional<CompletableFuture<T>>` into `CompletableFuture<Optional<T>>`
 ```java
     var optional = Optional.of(CompletableFuture.completedFuture(1));
     
