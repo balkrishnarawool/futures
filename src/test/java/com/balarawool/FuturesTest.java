@@ -35,9 +35,9 @@ public class FuturesTest {
         var future1 = CompletableFuture.completedFuture(Stream.of(1,2,3,4));
         var future2 = CompletableFuture.completedFuture(Stream.of(5,6,7,8));
 
-        var list = CompletableFutures.combine(future1, future2)
-                .join()
-                .collect(Collectors.toList());
+        // Combine these two futures to create one
+        var future = CompletableFutures.combine(future1, future2);
+        var list = future.join().collect(Collectors.toList());
         System.out.println(list);
     }
 
@@ -48,6 +48,7 @@ public class FuturesTest {
                 CompletableFuture.completedFuture(3),
                 CompletableFuture.completedFuture(4));
 
+        // Change sequence of wrapper types
         var future = CompletableFutures.sequence(stream);
         var list = future.join().collect(Collectors.toList());
         System.out.println(list);
@@ -57,6 +58,7 @@ public class FuturesTest {
     public void testSequenceOptional() {
         var optional = Optional.of(CompletableFuture.completedFuture(1));
 
+        // Change sequence of wrapper types
         var future = CompletableFutures.sequence(optional);
         var value = future.join().orElse(0);
         System.out.println(value);

@@ -42,7 +42,9 @@ But `CompletableFutures.combine()` provides an alternative which has the results
     var future1 = CompletableFuture.completedFuture(Stream.of(1,2,3,4));
     var future2 = CompletableFuture.completedFuture(Stream.of(5,6,7,8));
     
-    var list = CompletableFutures.combine(future1, future2).join().collect(Collectors.toList());
+    // Combine these two futures to create one
+    var future = CompletableFutures.combine(future1, future2);
+    var list = future.join().collect(Collectors.toList());
 ```
 
 #### Converting `Stream<CompletableFuture<T>>` into `CompletableFuture<Stream<T>>`
@@ -51,7 +53,8 @@ But `CompletableFutures.combine()` provides an alternative which has the results
             CompletableFuture.completedFuture(2),
             CompletableFuture.completedFuture(3),
             CompletableFuture.completedFuture(4));
-    
+
+    // Change sequence of wrapper types
     var future = CompletableFutures.sequence(stream);
     var list = future.join().collect(Collectors.toList());
 ```
@@ -59,7 +62,8 @@ But `CompletableFutures.combine()` provides an alternative which has the results
 #### Converting `Optional<CompletableFuture<T>>` into `CompletableFuture<Optional<T>>`
 ```java
     var optional = Optional.of(CompletableFuture.completedFuture(1));
-    
+
+    // Change sequence of wrapper types
     var future = CompletableFutures.sequence(optional);
     var value = future.join().orElse(0);
 ```
